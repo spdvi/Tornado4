@@ -806,7 +806,7 @@ MonoBehaviour:
   playerFPSLook: {fileID: 1064529560}
   healthBarImage: {fileID: 1915502779}
   gameData: {fileID: 11400000, guid: c13a3c7e714a0b94ca847ffe8ceaf5cb, type: 2}
-  countDownTime: 30
+  countDownTime: 60
 --- !u!4 &247929050
 Transform:
   m_ObjectHideFlags: 0
@@ -849,10 +849,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275161359}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -34.649002, y: 0.709, z: 34.224}
-  m_LocalScale: {x: 0.1, y: 0.3, z: 0.10000001}
+  m_LocalPosition: {x: -26.370003, y: 1.799, z: -10.84}
+  m_LocalScale: {x: 0.1, y: 0.3, z: 0.10000002}
   m_Children: []
-  m_Father: {fileID: 717016922}
+  m_Father: {fileID: 544466324}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!136 &275161361
@@ -2191,6 +2191,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 775207894}
+  - {fileID: 275161360}
+  - {fileID: 1727295175}
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2493,9 +2495,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.39, y: 0, z: 0.896}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1727295175}
-  - {fileID: 275161360}
+  m_Children: []
   m_Father: {fileID: 222761545}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2511,6 +2511,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4833c47e0df228408144c26e9b28bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponImages:
+  - {fileID: 1137230828}
+  - {fileID: 361732520}
+  - {fileID: 395696155}
 --- !u!1 &731991253
 GameObject:
   m_ObjectHideFlags: 0
@@ -4158,11 +4162,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727295174}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -8.279, y: 0.39999998, z: 27.904}
+  m_LocalPosition: {x: -0, y: 1.49, z: -17.16}
   m_LocalScale: {x: 0.20000002, y: 1, z: 0.2}
   m_Children: []
-  m_Father: {fileID: 717016922}
-  m_RootOrder: 0
+  m_Father: {fileID: 544466324}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!136 &1727295176
 CapsuleCollider:

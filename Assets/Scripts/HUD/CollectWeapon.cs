@@ -12,6 +12,7 @@ public class CollectWeapon : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             this.transform.parent = playerHand.transform;
+            playerHand.gameObject.GetComponent<WeaponManagerPlayer>().AddWeapon(transform);
         }
     }
 }

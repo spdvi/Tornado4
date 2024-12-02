@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 public class WeaponManagerPlayer : MonoBehaviour
 {
     private List<GameObject> weapons = new List<GameObject>();
-    private List<Image> weaponImages = new List<Image>();
+    public List<Image> weaponImages = new List<Image>();
     private int activeWeapon;
     
     void Start()
@@ -57,6 +58,7 @@ public class WeaponManagerPlayer : MonoBehaviour
                 weaponImages[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
             }
         }
+        weapon.gameObject.SetActive(false);
     }
     
     public void SelectWeapon(int weaponIndex)
@@ -68,6 +70,13 @@ public class WeaponManagerPlayer : MonoBehaviour
             if (i != activeWeapon)
             {
                 weapons[i].SetActive(false);
+                for (int j = 0; j < weaponImages.Count; j++)
+                {
+                    if (weaponImages[j].gameObject.name == weapons[i].gameObject.name)
+                    {
+                        weaponImages[j].GetComponent<Image>().color = Color.white;
+                    }
+                }
             }
             else
             {
@@ -82,5 +91,25 @@ public class WeaponManagerPlayer : MonoBehaviour
             }
         }
     }
-    
+
+    private void SelectNextWeapon()
+    {
+        if (activeWeapon >= weapons.Count - 1)
+        {
+            activeWeapon = 0;
+        }
+        else
+        {
+            activeWeapon++;
+        }
+        SelectWeapon(activeWeapon);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SelectNextWeapon();
+        }
+    }
 }
