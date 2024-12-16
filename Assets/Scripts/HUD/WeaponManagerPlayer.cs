@@ -10,6 +10,8 @@ public class WeaponManagerPlayer : MonoBehaviour
     public List<Image> weaponImages = new List<Image>();
     private int activeWeapon;
     
+    
+    
     void Start()
     {
         int numWeapons = transform.childCount;

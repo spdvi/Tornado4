@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using TMPro;
 using UnityEngine;
 using Tornado4.Player;
@@ -21,6 +22,8 @@ public class FPSLevelManager : MonoBehaviour
     private int coins = 0;
     public float countDownTime  = 3.0f;
     
+    public GameObject savingSystem;
+    
     private void Start()
     {
         youWinCanvas.SetActive(false);
@@ -35,6 +38,21 @@ public class FPSLevelManager : MonoBehaviour
         {
             LoseGame();
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            // SaveLevelData levelData = new SaveLevelData();
+            // levelData.NumCoins = coins;
+            // levelData.LevelTime = countDownTime;
+            // levelData.LevelName = SceneManager.GetActiveScene().name;
+            SaveLevelData levelData = new SaveLevelData(coins,
+                SceneManager.GetActiveScene().name,
+                countDownTime);
+            JObject levelDataJson = JObject.FromObject(levelData);
+            savingSystem.GetComponent<SavingSystem>().SaveFileAsJSon("partida1",
+                levelDataJson);
+        }
+        
     }
 
     public void CoinCollected()

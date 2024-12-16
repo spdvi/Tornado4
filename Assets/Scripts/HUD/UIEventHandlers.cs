@@ -8,13 +8,13 @@ public class UIEventHandlers : MonoBehaviour
     public void OnExitButtonClicked()
     {
 // If we are running in the editor
-#if UNITY_EDITOR
-        // Stop playing the scene
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
+// #if UNITY_EDITOR
+//         // Stop playing the scene
+//         UnityEditor.EditorApplication.isPlaying = false;
+// #else
             // Quit the application
             Application.Quit();
-#endif
+// #endif
     }
 
     public void OnNextLevelButtonClicked()
