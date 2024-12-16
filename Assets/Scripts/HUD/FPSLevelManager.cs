@@ -53,6 +53,23 @@ public class FPSLevelManager : MonoBehaviour
                 levelDataJson);
         }
         
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            // Deserializar json
+            JObject levelDataJson = savingSystem.GetComponent<SavingSystem>().LoadJsonFromFile("partida1");
+            SaveLevelData levelData = new SaveLevelData();
+            levelData.NumCoins = (int)levelDataJson["NumCoins"];
+            levelData.LevelTime = (float)levelDataJson["LevelTime"];
+            levelData.LevelName = (string)levelDataJson["LevelName"];
+            
+            Debug.Log("Num coins guardado: " + levelData.NumCoins);
+            Debug.Log("Level time guardado: " + levelData.LevelTime);
+            Debug.Log("Level name guardado: " + levelData.LevelName);
+
+            // Restaurar valores guardados
+            
+        }
+        
     }
 
     public void CoinCollected()

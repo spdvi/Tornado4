@@ -8,6 +8,25 @@ public class SavingSystem : MonoBehaviour
 {
     private const string extension = ".json";
     
+    public JObject LoadJsonFromFile(string saveFile)
+    {
+        string path = GetPathFromSaveFile(saveFile);
+        if (!File.Exists(path))
+        {
+            return new JObject();
+        }
+            
+        using (var textReader = File.OpenText(path))
+        {
+            using (var reader = new JsonTextReader(textReader))
+            {
+                reader.FloatParseHandling = FloatParseHandling.Double;
+                return JObject.Load(reader);
+            }
+        }
+
+    }
+
     
     public void SaveFileAsJSon(string saveFile, JObject state)
     {
