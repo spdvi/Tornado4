@@ -46,41 +46,34 @@ public class FPSLevelManager : MonoBehaviour
             // levelData.NumCoins = coins;
             // levelData.LevelTime = countDownTime;
             // levelData.LevelName = SceneManager.GetActiveScene().name;
-            // SaveLevelData levelData = new SaveLevelData(coins,
-            //     SceneManager.GetActiveScene().name,
-            //     countDownTime);
-            // JObject levelDataJson = JObject.FromObject(levelData);
-            // savingSystem.GetComponent<SavingSystem>().SaveFileAsJSon("partida1",
-            //     levelDataJson);
-            // SerializableVector3 position = new SerializableVector3();
-            // position.x = player.transform.position.x;
-            // position.y = player.transform.position.y;
-            // position.z = player.transform.position.z;
             SerializableVector3 position = new SerializableVector3(player.position.x,
                 player.position.y, player.position.z);
-            JObject playerPosition = JObject.FromObject(position);
-            savingSystem.GetComponent<SavingSystem>().SaveFileAsJSon("partida2", playerPosition);
+            
+            SaveLevelData levelData = new SaveLevelData(coins,
+                SceneManager.GetActiveScene().name,
+                countDownTime, position);
+            
+            JObject levelDataJson = JObject.FromObject(levelData);
+
+            savingSystem.GetComponent<SavingSystem>().SaveFileAsJSon("partida3",
+                levelDataJson);
+            
         }
         
         if (Input.GetKeyDown(KeyCode.L))
         {
             // Deserializar json
-            // JObject levelDataJson = savingSystem.GetComponent<SavingSystem>().LoadJsonFromFile("partida1");
-            // SaveLevelData levelData = new SaveLevelData();
-            // levelData.NumCoins = (int)levelDataJson["NumCoins"];
-            // levelData.LevelTime = (float)levelDataJson["LevelTime"];
-            // levelData.LevelName = (string)levelDataJson["LevelName"];
-            //
-            // Debug.Log("Num coins guardado: " + levelData.NumCoins);
-            // Debug.Log("Level time guardado: " + levelData.LevelTime);
-            // Debug.Log("Level name guardado: " + levelData.LevelName);
-            //
+            JObject levelDataJson = savingSystem.GetComponent<SavingSystem>().LoadJsonFromFile("partida3");
+            SaveLevelData levelData = new SaveLevelData();
+            levelData.NumCoins = (int)levelDataJson["NumCoins"];
+            levelData.LevelTime = (float)levelDataJson["LevelTime"];
+            levelData.LevelName = (string)levelDataJson["LevelName"];
+            levelData.PlayerPosition = levelDataJson["PlayerPosition"].ToObject<SerializableVector3>();
+
             // // Restaurar valores guardados
-            // countDownTime = levelData.LevelTime;
-            JObject playerPositionJson = savingSystem.GetComponent<SavingSystem>().LoadJsonFromFile("partida2");
-            SerializableVector3 playerPosition = new SerializableVector3( (float)playerPositionJson["x"],
-                (float)playerPositionJson["y"], (float)playerPositionJson["z"]);
-            player.position = playerPosition.ToVector3();
+            countDownTime = levelData.LevelTime;
+            player.position = levelData.PlayerPosition.ToVector3();
+            Debug.Log(levelData.LevelName);
         }
         
     }
