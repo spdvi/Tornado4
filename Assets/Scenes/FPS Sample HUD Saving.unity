@@ -805,6 +805,7 @@ MonoBehaviour:
   playerFPSMove: {fileID: 222761541}
   playerFPSLook: {fileID: 1064529560}
   healthBarImage: {fileID: 1915502779}
+  player: {fileID: 222761545}
   gameData: {fileID: 11400000, guid: c13a3c7e714a0b94ca847ffe8ceaf5cb, type: 2}
   countDownTime: 300
   savingSystem: {fileID: 1378189806}
