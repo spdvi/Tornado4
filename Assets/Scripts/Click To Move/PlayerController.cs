@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
                 GetComponent<NavMeshAgent>().destination = hit.point;
             }
         }
-        
+
+        Vector3 velocity = GetComponent<NavMeshAgent>().velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        GetComponent<Animator>().SetFloat("forwardSpeed", speed);
     }
 }
